@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= data.name %> - Agency</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="agency">
+    <!-- Hero Section -->
+    <div class="hero">
+      <% if (data.images && data.images.length > 0) { %>
+        <img src="<%= data.images[0] %>" alt="Logo" class="logo" />
+      <% } %>
+      <h1><%= data.name %></h1>
+      <p class="hero-sub">Creative solutions for your business</p>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <h2>About Our Agency</h2>
+      <div class="about"><%= data.about %></div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+      <h2>What We Offer</h2>
+      <div class="services">
+        <% data.services.forEach(function(service) { %>
+          <div class="service-card">
+            <span class="service-icon">🚀</span>
+            <div class="service-title"><%= service %></div>
+            <div class="service-desc">Innovative and tailored solutions for your growth.</div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <h2>Our Work</h2>
+      <div class="images">
+        <% data.images.slice(1).forEach(function(img) { %>
+          <img src="<%= img %>" alt="Image" />
+        <% }); %>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <h2>Contact Us</h2>
+      <div class="contact">
+        <div><strong>Phone:</strong> <%= data.contact.phone %></div>
+        <div><strong>Email:</strong> <%= data.contact.email %></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; <%= new Date().getFullYear() %> <%= data.name %> Agency. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
