@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= name %> - <%= siteType %></title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1><%= name %></h1>
+    <h2>Type: <%= siteType %></h2>
+    <p><%= about %></p>
+    <p><%= description %></p>
+  </header>
+  <section>
+    <h3>Contact Info</h3>
+    <ul>
+      <li>Phone: <%= contact.phone %></li>
+      <li>Email: <%= contact.email %></li>
+      <li>Address: <%= address %></li>
+      <li>Website: <%= website %></li>
+    </ul>
+  </section>
+  <section>
+    <h3>Services</h3>
+    <ul>
+      <% services.forEach(function(service) { %>
+        <li><%= service %></li>
+      <% }); %>
+    </ul>
+  </section>
+  <section>
+    <h3>Social Media</h3>
+    <ul>
+      <% socialAccounts.forEach(function(account) { %>
+        <li><%= account.type %>: <a href="<%= account.url %>"><%= account.url %></a></li>
+      <% }); %>
+    </ul>
+  </section>
+  <section>
+    <h3>Images</h3>
+    <% if (images && images.length) { %>
+      <% images.forEach(function(img) { %>
+        <img src="<%= img %>" alt="Uploaded Image" style="max-width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 8px #ccc;" />
+      <% }); %>
+    <% } %>
+  </section>
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> <%= name %>. All rights reserved.</p>
+  </footer>
+</body>
+</html>
