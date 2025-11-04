@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 const sidebarBtnStyle = {
     border: 'none',
@@ -43,7 +44,7 @@ function AdminDashboard() {
         if (updateIndexFile) formData.append('files', updateIndexFile);
         if (updateStyleFile) formData.append('files', updateStyleFile);
         try {
-            await axios.post(`http://localhost:5000/api/admin/update-files/${updateTarget}`, formData, {
+            await axios.post(`${API_BASE_URL}/api/admin/update-files/${updateTarget}`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             setUploadMessage('Files updated successfully!');
@@ -57,7 +58,7 @@ function AdminDashboard() {
     };
 
     const fetchTemplates = () => {
-        axios.get('http://localhost:5000/api/admin/templates')
+    axios.get(`${API_BASE_URL}/api/admin/templates`)
             .then(res => setTemplates(res.data.templates))
             .catch(() => setTemplates([]));
     };
@@ -70,7 +71,7 @@ function AdminDashboard() {
     const handleDelete = async (templateName) => {
         if (!window.confirm(`Delete template '${templateName}'?`)) return;
         try {
-            await axios.delete(`http://localhost:5000/api/admin/templates/${templateName}`);
+            await axios.delete(`${API_BASE_URL}/api/admin/templates/${templateName}`);
             fetchTemplates();
         } catch (err) {
             alert('Delete failed: ' + (err.response?.data?.message || 'Server error'));
@@ -94,7 +95,7 @@ function AdminDashboard() {
         const formData = new FormData();
         formData.append('templateZip', file);
         try {
-            await axios.post('http://localhost:5000/api/admin/upload-template', formData, {
+            await axios.post(`${API_BASE_URL}/api/admin/upload-template`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             setUploadMessage('Template uploaded successfully!');
@@ -118,7 +119,7 @@ function AdminDashboard() {
         formData.append('folderName', folderName.trim());
         formData.append('siteType', siteType);
         try {
-            await axios.post('http://localhost:5000/api/admin/upload-files', formData, {
+            await axios.post(`${API_BASE_URL}/api/admin/upload-files`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             setUploadMessage('Files uploaded successfully!');
@@ -205,7 +206,7 @@ function AdminDashboard() {
                                                             <li key={t.folderName || t} style={{ marginBottom: '0.5rem', color: '#191654', fontWeight: 'bold', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1.5rem', padding: '0.7rem 0', borderBottom: '1px solid #eee' }}>
                                                                 <span style={{ minWidth: '140px' }}>{t.name || t.folderName || t}</span>
                                                                 <span style={{ fontSize: '0.95rem', color: '#43c6ac', fontWeight: 'bold', background: '#f8ffae', borderRadius: '0.5rem', padding: '0.2rem 0.7rem', minWidth: '120px', textAlign: 'center' }}>Site Type: {t.siteType || 'Unknown'}</span>
-                                                                <img src={`http://localhost:5000/templates/${t.folderName || t}/template.png`} alt="template" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '0.5rem', border: '1px solid #ccc', background: '#fff', cursor: 'pointer' }} onClick={() => setModalImage(`http://localhost:5000/templates/${t.folderName || t}/template.png`)} onError={e => {e.target.style.display='none';}} />
+                                                                <img src={`${API_BASE_URL}/templates/${t.folderName || t}/template.png`} alt="template" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '0.5rem', border: '1px solid #ccc', background: '#fff', cursor: 'pointer' }} onClick={() => setModalImage(`${API_BASE_URL}/templates/${t.folderName || t}/template.png`)} onError={e => {e.target.style.display='none';}} />
                                                                 <button onClick={() => handleDelete(t.folderName || t)} style={{ background: '#e74c3c', color: '#fff', border: 'none', borderRadius: '0.7rem', padding: '0.3rem 1rem', fontWeight: 'bold', cursor: 'pointer' }}>Delete</button>
                                                                 <button onClick={() => setUpdateTarget(t.folderName || t)} style={{ background: '#43c6ac', color: '#fff', border: 'none', borderRadius: '0.7rem', padding: '0.3rem 1rem', fontWeight: 'bold', cursor: 'pointer' }}>Update</button>
                                                                 {/* Fullscreen image modal */}

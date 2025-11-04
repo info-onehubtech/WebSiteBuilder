@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
-const API_URL = 'http://localhost:5000/api';
-const BACKEND_BASE_URL = 'http://localhost:5000'; // Needed to construct the direct preview link
+const API_URL = `${API_BASE_URL}/api`;
+const BACKEND_BASE_URL = API_BASE_URL; // Needed to construct the direct preview link
 
 function PreviewPublish() {
   const { id } = useParams();

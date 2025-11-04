@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = `${API_BASE_URL}/api`;
 
 function Editor() {
   const navigate = useNavigate();
@@ -268,7 +269,7 @@ function Editor() {
               marginBottom: '0.2rem',
               display: 'inline-block',
             }}>Website URL:</label>
-            <input type="url" name="website" value={formData.website} onChange={handleChange} placeholder="Website URL (https://...)" style={{
+            <input type="url" name="website" value={formData.website} onChange={handleChange} placeholder={`Website URL (${API_BASE_URL}...)`} style={{
               padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
             }} />
             <label style={{
@@ -357,7 +358,7 @@ function Editor() {
                   style={{ width: '120px', height: '80px', objectFit: 'cover', borderRadius: '0.7rem', boxShadow: '0 2px 8px rgba(60,60,120,0.10)', background: '#f6f8fa' }}
                   onError={e => {
                     e.target.onerror = null;
-                    e.target.src = 'https://via.placeholder.com/120x80?text=No+Image';
+                    e.target.src = `${API_BASE_URL}/via.placeholder.com/120x80?text=No+Image`;
                     e.target.nextSibling && (e.target.nextSibling.textContent = 'No template image found');
                   }}
                 />
