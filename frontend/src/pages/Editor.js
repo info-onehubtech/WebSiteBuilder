@@ -69,6 +69,7 @@ function Editor() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -212,6 +213,7 @@ function Editor() {
               <option value="Business">Business</option>
               <option value="Personal">Personal</option>
               <option value="Event">Event</option>
+              <option value="E-commerce">E-commerce</option>
               
             </select>
             <label style={{
@@ -345,50 +347,11 @@ function Editor() {
                   <button type="button" onClick={() => removeSocialInput(idx)} style={{ background: '#ff4e50', color: '#fff', border: 'none', borderRadius: '0.7rem', padding: '0.5rem 0.8rem', cursor: 'pointer' }}>Remove</button>
                 )}
               </div>
+
+
+
             ))}
-            <button type="button" onClick={addSocialInput} style={{ background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)', color: '#fff', border: 'none', borderRadius: '1rem', padding: '0.5rem 1.2rem', fontWeight: 'bold', cursor: 'pointer', marginBottom: '1rem' }}>+ Add Social Account</button>
-            <label style={{
-              fontWeight: 'bold',
-              color: '#F012BE',
-              background: 'rgba(240,18,190,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Selected Template:</label>
-            <select name="templateId" value={formData.templateId} onChange={handleChange} style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
-            }}>
-              {filteredTemplates.length === 0 ? (
-                <option value="">No templates available for this site type</option>
-              ) : (
-                filteredTemplates.map(t => (
-                  <option key={t.folderName} value={t.folderName}>{t.name || t.folderName}</option>
-                ))
-              )}
-            </select>
-            {/*
-            {formData.templateId && (
-              <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-                <img
-                  src={getTemplateImageUrl(formData.templateId)}
-                  alt="Template Preview"
-                  style={{ width: '120px', height: '80px', objectFit: 'cover', borderRadius: '0.7rem', boxShadow: '0 2px 8px rgba(60,60,120,0.10)', background: '#f6f8fa' }}
-                  onError={e => {
-                    e.target.onerror = null;
-                    e.target.src = `${API_BASE_URL}/via.placeholder.com/120x80?text=No+Image`;
-                    e.target.nextSibling && (e.target.nextSibling.textContent = 'No template image found');
-                  }}
-                />
-                <div style={{ fontSize: '0.95rem', color: '#4a5a6a', marginTop: '0.3rem' }}>Template Preview</div>
-              </div>
-            )}
-            */}
-          </div>
-          {/* Column 4: Images & Services */}
+            {/* Column 4: Images & Services */}
           <div style={{ background: '#fff', borderRadius: '1.2rem', boxShadow: '0 4px 16px rgba(60,60,120,0.10)', padding: '2rem 1.2rem', display: 'flex', flexDirection: 'column', gap: '1.2rem', alignItems: 'flex-start' }}>
             <label style={{
               fontWeight: 'bold',
@@ -430,6 +393,53 @@ function Editor() {
               marginBottom: '0.2rem',
               display: 'inline-block',
             }}>Services:</label>
+            
+            
+          </div>
+          {/* Submit Button & Message */}
+            <button type="button" onClick={addSocialInput} style={{ background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)', color: '#fff', border: 'none', borderRadius: '1rem', padding: '0.5rem 1.2rem', fontWeight: 'bold', cursor: 'pointer', marginBottom: '1rem' }}>+ Add Social Account</button>
+            <label style={{
+              fontWeight: 'bold',
+              color: '#F012BE',
+              background: 'rgba(240,18,190,0.08)',
+              padding: '0.45rem 1rem',
+              borderRadius: '0.7rem',
+              fontSize: '1.08rem',
+              letterSpacing: '0.03em',
+              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
+              marginBottom: '0.2rem',
+              display: 'inline-block',
+            }}>Selected Template:</label>
+            <select name="templateId" value={formData.templateId} onChange={handleChange} style={{
+              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
+            }}>
+              {filteredTemplates.length === 0 ? (
+                <option value="">No templates available for this site type</option>
+              ) : (
+                filteredTemplates.map(t => (
+                  <option key={t.folderName} value={t.folderName}>{t.name || t.folderName}</option>
+                ))
+              )}
+            </select>
+            {/*
+            {formData.templateId && (
+              <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                <img
+                  src={getTemplateImageUrl(formData.templateId)}
+                  alt="Template Preview"
+                  style={{ width: '120px', height: '80px', objectFit: 'cover', borderRadius: '0.7rem', boxShadow: '0 2px 8px rgba(60,60,120,0.10)', background: '#f6f8fa' }}
+                  onError={e => {
+                    e.target.onerror = null;
+                    e.target.src = `${API_BASE_URL}/via.placeholder.com/120x80?text=No+Image`;
+                    e.target.nextSibling && (e.target.nextSibling.textContent = 'No template image found');
+                  }}
+                />
+                <div style={{ fontSize: '0.95rem', color: '#4a5a6a', marginTop: '0.3rem' }}>Template Preview</div>
+              </div>
+            )}
+
+            */
+            
             <div style={{ width: '100%' }}>
               {formData.services.map((service, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
@@ -455,9 +465,50 @@ function Editor() {
                 </div>
               ))}
               <button type="button" onClick={() => setFormData({ ...formData, services: [...formData.services, ''] })} style={{ background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)', color: '#fff', border: 'none', borderRadius: '1rem', padding: '0.5rem 1.2rem', fontWeight: 'bold', cursor: 'pointer', marginBottom: '1rem' }}>+ Add Service</button>
-            </div>
+            </div>}
+
+            
           </div>
-          {/* Submit Button & Message */}
+          
+          {/* Template Preview below the button */}
+          {formData.templateId && (
+            <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+                <img
+                  src={`http://localhost:5000/templates/${formData.templateId}/template.png`}
+                  alt="Template Preview"
+                  style={{ width: '120px', height: '80px', objectFit: 'cover', borderRadius: '0.7rem', boxShadow: '0 2px 8px rgba(60,60,120,0.10)', background: '#f6f8fa', cursor: 'pointer' }}
+                  onClick={() => setShowModal(true)}
+                  onError={e => {
+                    e.target.onerror = null;
+                    e.target.src = 'http://localhost:5000/via.placeholder.com/120x80?text=No+Image';
+                  }}
+                />
+              <div style={{ fontSize: '1.05rem', color: '#4a5a6a', marginTop: '0.5rem' }}>Selected Template Preview</div>
+              {showModal && (
+                <div style={{
+                  position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 9999,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }} onClick={() => setShowModal(false)}>
+                  <button
+                    onClick={e => { e.stopPropagation(); setShowModal(false); }}
+                    style={{
+                      position: 'absolute', top: '2rem', right: '2rem', background: '#fff', color: '#191654', border: 'none', borderRadius: '2rem', padding: '0.7rem 1.4rem', fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 2px 8px rgba(60,60,120,0.18)', zIndex: 10000
+                    }}
+                  >✕ Close</button>
+                  <img
+                    src={`http://localhost:5000/templates/${formData.templateId}/template.png`}
+                    alt="Template Fullscreen"
+                    style={{ maxWidth: '90vw', maxHeight: '90vh', borderRadius: '1.2rem', boxShadow: '0 8px 32px rgba(0,0,0,0.25)', background: '#fff' }}
+                    onClick={e => e.stopPropagation()}
+                    onError={e => {
+                      e.target.onerror = null;
+                      e.target.src = 'http://localhost:5000/via.placeholder.com/220x140?text=No+Image';
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          )}
 
           <button type="submit" disabled={loading} style={{
             background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)',
@@ -476,7 +527,9 @@ function Editor() {
           >
             {loading ? 'Processing...' : 'Generate Website'}
           </button>
+          
           <p style={{ color: '#e74c3c', fontWeight: 'bold', marginTop: '0.5rem' }}>{message}</p>
+
         </form>
         {/* Floating quote at bottom right, always visible */}
         <div style={{

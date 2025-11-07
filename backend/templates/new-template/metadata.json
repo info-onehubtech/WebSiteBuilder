@@ -1,0 +1,7 @@
+{
+  "name": "new-template",
+  "description": "A basic website template for WebSiteBuilder.",
+  "author": "Your Name",
+  "version": "1.0.0",
+  "fields": ["title", "heading", "content", "year"]
+}
