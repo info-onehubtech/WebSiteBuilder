@@ -162,7 +162,39 @@ function AdminDashboard() {
                 )}
                 {activeTab === 'uploader' && (
                     <div>
-                        <h1>Template Uploader</h1>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                            <h1>Template Uploader</h1>
+                            <a 
+                                href={`${API_BASE_URL}/public/template-guide.html`} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    padding: '0.75rem 1.5rem',
+                                    background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)',
+                                    color: 'white',
+                                    textDecoration: 'none',
+                                    borderRadius: '8px',
+                                    fontWeight: '600',
+                                    fontSize: '0.95rem',
+                                    boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
+                                    transition: 'all 0.3s ease'
+                                }}
+                                onMouseEnter={e => {
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(102, 126, 234, 0.4)';
+                                }}
+                                onMouseLeave={e => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
+                                }}
+                            >
+                                <span style={{ fontSize: '1.2rem' }}>📖</span>
+                                Template Creation Guide
+                            </a>
+                        </div>
                         <form onSubmit={handleFilesUpload} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', maxWidth: '700px', marginTop: '2rem' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem', alignItems: 'center', justifyContent: 'flex-start' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>

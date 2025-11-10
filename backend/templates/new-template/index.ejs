@@ -9,28 +9,88 @@
 <body>
     <header>
         <h1><%= name %></h1>
+        <% if (siteType) { %>
+            <p class="site-type"><%= siteType %></p>
+        <% } %>
     </header>
+    
     <main>
+        <!-- Images Gallery Section -->
+        <% if (images && images.length > 0) { %>
+        <section class="gallery">
+            <h2>Gallery</h2>
+            <div class="image-grid">
+                <% images.forEach(function(image) { %>
+                    <div class="image-item">
+                        <img src="<%= image %>" alt="Gallery Image">
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- About Section -->
         <section>
             <h2>About</h2>
             <p><%= about %></p>
         </section>
+
+        <!-- Description Section -->
+        <% if (description) { %>
+        <section>
+            <h2>Description</h2>
+            <p><%= description %></p>
+        </section>
+        <% } %>
+
+        <!-- Services Section -->
+        <% if (services && services.length > 0) { %>
         <section>
             <h2>Services</h2>
             <ul>
-                <% if (services && services.length) { services.forEach(function(service) { %>
+                <% services.forEach(function(service) { %>
                     <li><%= service %></li>
-                <% }); } %>
+                <% }); %>
             </ul>
         </section>
+        <% } %>
+
+        <!-- Contact Section -->
         <section>
             <h2>Contact</h2>
-            <p>Phone: <%= contact.phone %></p>
-            <p>Email: <%= contact.email %></p>
+            <% if (contact && contact.phone) { %>
+                <p><strong>Phone:</strong> <%= contact.phone %></p>
+            <% } %>
+            <% if (contact && contact.email) { %>
+                <p><strong>Email:</strong> <%= contact.email %></p>
+            <% } %>
+            <% if (address) { %>
+                <p><strong>Address:</strong> <%= address %></p>
+            <% } %>
+            <% if (website) { %>
+                <p><strong>Website:</strong> <a href="<%= website %>" target="_blank"><%= website %></a></p>
+            <% } %>
         </section>
+
+        <!-- Social Media Section -->
+        <% if (socialAccounts && socialAccounts.length > 0) { %>
+        <section>
+            <h2>Follow Us</h2>
+            <div class="social-links">
+                <% socialAccounts.forEach(function(account) { %>
+                    <% if (account.url) { %>
+                        <a href="<%= account.url %>" target="_blank" class="social-link">
+                            <%= account.type || 'Link' %>
+                        </a>
+                    <% } %>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
     </main>
+    
     <footer>
-        <p>&copy; <%= new Date().getFullYear() %> WebSiteBuilder</p>
+        <p>&copy; <%= new Date().getFullYear() %> <%= name %>. All rights reserved.</p>
     </footer>
 </body>
 </html>

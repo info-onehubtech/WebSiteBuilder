@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %> - Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <% if (images && images.length > 0) { %>
+                    <img src="<%= images[0] %>" alt="Logo" class="logo-img">
+                <% } %>
+                <span class="logo-text"><%= name %></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#gallery" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-label"><%= siteType || 'Developer' %></span>
+                <h1 class="hero-title">
+                    <span class="gradient-text"><%= name %></span>
+                </h1>
+                <p class="hero-subtitle"><%= description || about %></p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#gallery" class="btn btn-secondary">View Work</a>
+                </div>
+                
+                <!-- Social Links in Hero -->
+                <% if (socialAccounts && socialAccounts.length > 0) { %>
+                <div class="hero-social">
+                    <% socialAccounts.forEach(function(account) { %>
+                        <% if (account.url) { %>
+                            <a href="<%= account.url %>" target="_blank" class="social-icon" title="<%= account.type %>">
+                                <% if (account.type === 'Facebook') { %>
+                                    <i class="fab fa-facebook-f"></i>
+                                <% } else if (account.type === 'Twitter') { %>
+                                    <i class="fab fa-twitter"></i>
+                                <% } else if (account.type === 'Instagram') { %>
+                                    <i class="fab fa-instagram"></i>
+                                <% } else if (account.type === 'LinkedIn') { %>
+                                    <i class="fab fa-linkedin-in"></i>
+                                <% } else if (account.type === 'YouTube') { %>
+                                    <i class="fab fa-youtube"></i>
+                                <% } else if (account.type === 'GitHub') { %>
+                                    <i class="fab fa-github"></i>
+                                <% } else { %>
+                                    <i class="fas fa-link"></i>
+                                <% } %>
+                            </a>
+                        <% } %>
+                    <% }); %>
+                </div>
+                <% } %>
+            </div>
+            <% if (images && images.length > 1) { %>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="<%= images[1] %>" alt="<%= name %>">
+                    <div class="image-decoration"></div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Who I Am</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <% if (images && images.length > 2) { %>
+                        <img src="<%= images[2] %>" alt="About <%= name %>">
+                    <% } else if (images && images.length > 0) { %>
+                        <img src="<%= images[0] %>" alt="About <%= name %>">
+                    <% } %>
+                    <div class="about-image-decoration"></div>
+                </div>
+                <div class="about-text">
+                    <h3 class="about-subtitle">Professional <%= siteType || 'Developer' %></h3>
+                    <p class="about-description"><%= about %></p>
+                    <% if (description && description !== about) { %>
+                        <p class="about-description"><%= description %></p>
+                    <% } %>
+                    
+                    <div class="about-info">
+                        <% if (contact && contact.email) { %>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="info-label">Email</span>
+                                <span class="info-value"><%= contact.email %></span>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (contact && contact.phone) { %>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span class="info-label">Phone</span>
+                                <span class="info-value"><%= contact.phone %></span>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (address) { %>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value"><%= address %></span>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (website) { %>
+                        <div class="info-item">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <span class="info-label">Website</span>
+                                <a href="<%= website %>" target="_blank" class="info-value"><%= website %></a>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">Hire Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <% if (services && services.length > 0) { %>
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What I Do</span>
+                <h2 class="section-title">My Services</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="services-grid">
+                <% services.forEach(function(service, index) { %>
+                <div class="service-card" data-aos="fade-up" data-delay="<%= index * 100 %>">
+                    <div class="service-icon">
+                        <% const icons = ['fa-code', 'fa-mobile-alt', 'fa-palette', 'fa-database', 'fa-server', 'fa-cogs']; %>
+                        <i class="fas <%= icons[index % icons.length] %>"></i>
+                    </div>
+                    <h3 class="service-title"><%= service %></h3>
+                    <p class="service-description">Professional <%= service.toLowerCase() %> solutions tailored to your needs.</p>
+                    <div class="service-decoration"></div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+    <% } %>
+
+    <!-- Portfolio/Gallery Section -->
+    <% if (images && images.length > 0) { %>
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">My Work</span>
+                <h2 class="section-title">Portfolio Gallery</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="gallery-grid">
+                <% images.forEach(function(image, index) { %>
+                <div class="gallery-item" data-category="project-<%= index + 1 %>">
+                    <img src="<%= image %>" alt="Project <%= index + 1 %>">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>Project <%= index + 1 %></h4>
+                            <p>View Details</p>
+                            <div class="gallery-icons">
+                                <a href="<%= image %>" target="_blank" class="gallery-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+    <% } %>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Contact Me</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="contact-subtitle">Let's Work Together</h3>
+                    <p class="contact-description">I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+                    
+                    <div class="contact-details">
+                        <% if (contact && contact.email) { %>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:<%= contact.email %>"><%= contact.email %></a>
+                            </div>
+                        </div>
+                        <% } %>
+                        
+                        <% if (contact && contact.phone) { %>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:<%= contact.phone %>"><%= contact.phone %></a>
+                            </div>
+                        </div>
+                        <% } %>
+                        
+                        <% if (address) { %>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p><%= address %></p>
+                            </div>
+                        </div>
+                        <% } %>
+                        
+                        <% if (website) { %>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <h4>Website</h4>
+                                <a href="<%= website %>" target="_blank"><%= website %></a>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+
+                    <!-- Social Links -->
+                    <% if (socialAccounts && socialAccounts.length > 0) { %>
+                    <div class="contact-social">
+                        <h4>Follow Me</h4>
+                        <div class="social-links">
+                            <% socialAccounts.forEach(function(account) { %>
+                                <% if (account.url) { %>
+                                    <a href="<%= account.url %>" target="_blank" class="social-link" title="<%= account.type %>">
+                                        <% if (account.type === 'Facebook') { %>
+                                            <i class="fab fa-facebook-f"></i>
+                                        <% } else if (account.type === 'Twitter') { %>
+                                            <i class="fab fa-twitter"></i>
+                                        <% } else if (account.type === 'Instagram') { %>
+                                            <i class="fab fa-instagram"></i>
+                                        <% } else if (account.type === 'LinkedIn') { %>
+                                            <i class="fab fa-linkedin-in"></i>
+                                        <% } else if (account.type === 'YouTube') { %>
+                                            <i class="fab fa-youtube"></i>
+                                        <% } else if (account.type === 'GitHub') { %>
+                                            <i class="fab fa-github"></i>
+                                        <% } else if (account.type === 'Pinterest') { %>
+                                            <i class="fab fa-pinterest"></i>
+                                        <% } else { %>
+                                            <i class="fas fa-link"></i>
+                                        <% } %>
+                                    </a>
+                                <% } %>
+                            <% }); %>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Send Message
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><%= name %></h3>
+                    <p><%= description || about %></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <% if (contact && contact.email) { %>
+                        <p><i class="fas fa-envelope"></i> <%= contact.email %></p>
+                    <% } %>
+                    <% if (contact && contact.phone) { %>
+                        <p><i class="fas fa-phone"></i> <%= contact.phone %></p>
+                    <% } %>
+                    <% if (address) { %>
+                        <p><i class="fas fa-map-marker-alt"></i> <%= address %></p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <%= new Date().getFullYear() %> <%= name %>. All Rights Reserved.</p>
+                <p>Built with passion and creativity</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar Background on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .gallery-item, .contact-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form Submission (Demo)
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form.');
+        });
+    </script>
+</body>
+</html>

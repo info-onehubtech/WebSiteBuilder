@@ -1,0 +1,32 @@
+{
+  "name": "developer-portfolio",
+  "description": "Modern and stylish developer portfolio template with full-page sections, animations, and responsive design",
+  "author": "WebSiteBuilder",
+  "version": "1.0.0",
+  "siteType": "Portfolio",
+  "fields": [
+    "name",
+    "siteType",
+    "about",
+    "description",
+    "services",
+    "contact",
+    "address",
+    "website",
+    "socialAccounts",
+    "images"
+  ],
+  "features": [
+    "Responsive Navigation",
+    "Hero Section with Gradient Background",
+    "About Section with Image",
+    "Services Grid with Icons",
+    "Portfolio Gallery",
+    "Contact Form",
+    "Social Media Links",
+    "Smooth Scrolling",
+    "Scroll Animations",
+    "Mobile Menu",
+    "Scroll to Top Button"
+  ]
+}

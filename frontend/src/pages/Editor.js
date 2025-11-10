@@ -121,455 +121,396 @@ function Editor() {
 
   return (
     <div style={{
-       
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: '1.2rem',
-        backgroundColor: 'rgba(2, 5, 43, 0.45)',
-
-      }}>
-      <div >
-        <h1 style={{
-          textAlign: 'center',
-          fontSize: '2.7rem',
-          fontWeight: 'bold',
-          letterSpacing: '0.07em',
-          margin: 0,
-          background: 'linear-gradient(90deg, #43c6ac 0%, #f8ffae 50%, #191654 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          color: '#191654',
-          textShadow: '0 4px 16px rgba(60,60,120,0.18)',
-          padding: '1.1rem 2.5rem',
-          borderRadius: '2rem',
-          fontFamily: 'Segoe UI, Arial, sans-serif',
-          backgroundColor: 'rgba(255, 255, 255, 0.45)',
-          boxShadow: '0 4px 24px rgba(60,60,120,0.10)',
-        }}>Site Content Editor</h1>
-      </div>
+      minHeight: '100vh',
+      background: '#f5f7fa',
+      fontFamily: 'Arial, sans-serif',
+      padding: '2rem',
+    }}>
+      {/* Header */}
       <div style={{
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)',
-        fontFamily: 'Segoe UI, Arial, sans-serif',
-        padding: '2rem',
+        maxWidth: '900px',
+        margin: '0 auto 2rem',
+        textAlign: 'center',
       }}>
+        <h1 style={{
+          fontSize: '2rem',
+          color: '#333',
+          marginBottom: '0.5rem',
+        }}>Website Builder</h1>
+        <p style={{ color: '#666', fontSize: '1rem' }}>Fill in the details below to create your website</p>
+      </div>
 
-        <form onSubmit={handleSubmit} style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          gap: '2.5rem',
-          width: '100%',
-          alignItems: 'start',
-        }}>
-
-          {/* Column 1: Basic Info */}
-          <div style={{ background: '#fff', borderRadius: '1.2rem', boxShadow: '0 4px 16px rgba(60,60,120,0.10)', padding: '2rem 1.2rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-
-            <h2 style={{
-              textAlign: 'left',
-              color: '#191654',
-              marginBottom: '0.5rem',
-              fontSize: '2.2rem',
-              fontWeight: 'bold',
-              letterSpacing: '1px',
-            }}>Site Content Editor</h2>
-            <label style={{
-              fontWeight: 'bold',
-              color: '#0074D9',
-              background: 'rgba(0,116,217,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Website Name:</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Enter website name" style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
-            }} />
-            <label style={{
-              fontWeight: 'bold',
-              color: '#FF69B4',
-              background: 'rgba(255,105,180,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Site Type:</label>
-            <select name="siteType" value={formData.siteType} onChange={handleChange} style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem', background: '#fff', marginBottom: '0.5rem'
-            }}>
-              <option value="">Select site type</option>
-              <option value="Portfolio">Portfolio</option>
-              <option value="Blog">Blog</option>
-              <option value="Business">Business</option>
-              <option value="Personal">Personal</option>
-              <option value="Event">Event</option>
-              <option value="E-commerce">E-commerce</option>
-              
-            </select>
-            <label style={{
-              fontWeight: 'bold',
-              color: '#2ECC40',
-              background: 'rgba(46,204,64,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>About Content:</label>
-            <textarea name="about" value={formData.about} onChange={handleChange} required placeholder="Describe your website or business" style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem', minHeight: '70px',
-            }} />
-            <label style={{
-              fontWeight: 'bold',
-              color: '#FF851B',
-              background: 'rgba(255,133,27,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Description:</label>
-            <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Short description for your website" style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem', minHeight: '70px',
-            }} />
-          </div>
-          {/* Column 2: Contact & Address */}
-          <div style={{ background: '#fff', borderRadius: '1.2rem', boxShadow: '0 4px 16px rgba(60,60,120,0.10)', padding: '2rem 1.2rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-            <label style={{
-              fontWeight: 'bold',
-              color: '#B10DC9',
-              background: 'rgba(177,13,201,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Contact Phone:</label>
-            <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="Contact phone number" style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
-            }} />
-            <label style={{
-              fontWeight: 'bold',
-              color: '#FF4136',
-              background: 'rgba(255,65,54,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Contact Email:</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Contact email address" style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
-            }} />
-            <label style={{
-              fontWeight: 'bold',
-              color: '#39CCCC',
-              background: 'rgba(57,204,204,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Website URL:</label>
-            <input type="url" name="website" value={formData.website} onChange={handleChange} placeholder={`Website URL (${API_BASE_URL}...)`} style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
-            }} />
-            <label style={{
-              fontWeight: 'bold',
-              color: '#3D9970',
-              background: 'rgba(61,153,112,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Address:</label>
-            <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Business address" style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
-            }} />
-          </div>
-          {/* Column 3: Social Media & Template */}
-          <div style={{ background: '#fff', borderRadius: '1.2rem', boxShadow: '0 4px 16px rgba(60,60,120,0.10)', padding: '2rem 1.2rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-            <label style={{
-              fontWeight: 'bold',
-              color: '#85144b',
-              background: 'rgba(133,20,75,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Social Media Accounts:</label>
-            {formData.socialAccounts.map((account, idx) => (
-              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <select value={account.type} onChange={e => handleSocialChange(idx, 'type', e.target.value)} style={{ padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem' }}>
-                  <option value="">Select Type</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="Twitter">Twitter</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="LinkedIn">LinkedIn</option>
-                  <option value="YouTube">YouTube</option>
-                  <option value="Pinterest">Pinterest</option>
-                  <option value="Other">Other</option>
-                </select>
-                <input
-                  type="url"
-                  value={account.url}
-                  onChange={e => handleSocialChange(idx, 'url', e.target.value)}
-                  placeholder={`Enter ${account.type || 'social'} profile URL`}
-                  style={{ padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem', flex: 1 }}
-                />
-                {formData.socialAccounts.length > 1 && (
-                  <button type="button" onClick={() => removeSocialInput(idx)} style={{ background: '#ff4e50', color: '#fff', border: 'none', borderRadius: '0.7rem', padding: '0.5rem 0.8rem', cursor: 'pointer' }}>Remove</button>
-                )}
-              </div>
-
-
-
-            ))}
-            {/* Column 4: Images & Services */}
-          <div style={{ background: '#fff', borderRadius: '1.2rem', boxShadow: '0 4px 16px rgba(60,60,120,0.10)', padding: '2rem 1.2rem', display: 'flex', flexDirection: 'column', gap: '1.2rem', alignItems: 'flex-start' }}>
-            <label style={{
-              fontWeight: 'bold',
-              color: '#7FDBFF',
-              background: 'rgba(127,219,255,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Upload Logo/Images (Max 5):</label>
-            <input type="file" multiple accept="image/*" onChange={handleImageChange} style={{
-              padding: '0.5rem', borderRadius: '0.7rem', border: '1px solid #d0d7de',
-            }} />
-            {images.length > 0 && (
-              <div style={{ display: 'flex', gap: '0.7rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
-                {images.map((img, idx) => (
-                  <div key={idx} style={{ position: 'relative', width: '70px', height: '70px', borderRadius: '0.7rem', overflow: 'hidden', boxShadow: '0 2px 8px rgba(60,60,120,0.10)', background: '#f6f8fa' }}>
-                    <img
-                      src={URL.createObjectURL(img)}
-                      alt={`preview-${idx}`}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.7rem' }}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-            <label style={{
-              fontWeight: 'bold',
-              color: '#FFDC00',
-              background: 'rgba(255,220,0,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Services:</label>
-            
-            
-          </div>
-          {/* Submit Button & Message */}
-            <button type="button" onClick={addSocialInput} style={{ background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)', color: '#fff', border: 'none', borderRadius: '1rem', padding: '0.5rem 1.2rem', fontWeight: 'bold', cursor: 'pointer', marginBottom: '1rem' }}>+ Add Social Account</button>
-            <label style={{
-              fontWeight: 'bold',
-              color: '#F012BE',
-              background: 'rgba(240,18,190,0.08)',
-              padding: '0.45rem 1rem',
-              borderRadius: '0.7rem',
-              fontSize: '1.08rem',
-              letterSpacing: '0.03em',
-              boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-              marginBottom: '0.2rem',
-              display: 'inline-block',
-            }}>Selected Template:</label>
-            <select name="templateId" value={formData.templateId} onChange={handleChange} style={{
-              padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem',
-            }}>
-              {filteredTemplates.length === 0 ? (
-                <option value="">No templates available for this site type</option>
-              ) : (
-                filteredTemplates.map(t => (
-                  <option key={t.folderName} value={t.folderName}>{t.name || t.folderName}</option>
-                ))
-              )}
-            </select>
-            {/*
-            {formData.templateId && (
-              <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-                <img
-                  src={getTemplateImageUrl(formData.templateId)}
-                  alt="Template Preview"
-                  style={{ width: '120px', height: '80px', objectFit: 'cover', borderRadius: '0.7rem', boxShadow: '0 2px 8px rgba(60,60,120,0.10)', background: '#f6f8fa' }}
-                  onError={e => {
-                    e.target.onerror = null;
-                    e.target.src = `${API_BASE_URL}/via.placeholder.com/120x80?text=No+Image`;
-                    e.target.nextSibling && (e.target.nextSibling.textContent = 'No template image found');
-                  }}
-                />
-                <div style={{ fontSize: '0.95rem', color: '#4a5a6a', marginTop: '0.3rem' }}>Template Preview</div>
-              </div>
-            )}
-
-            */
-            
-            <div style={{ width: '100%' }}>
-              {formData.services.map((service, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  <input
-                    type="text"
-                    value={service}
-                    onChange={e => {
-                      const updated = [...formData.services];
-                      updated[idx] = e.target.value;
-                      setFormData({ ...formData, services: updated });
-                    }}
-                    placeholder={`Enter service ${idx + 1}`}
-                    style={{
-                      padding: '0.7rem', borderRadius: '0.7rem', border: '1px solid #d0d7de', fontSize: '1rem', flex: 1
-                    }}
-                  />
-                  {formData.services.length > 1 && (
-                    <button type="button" onClick={() => {
-                      const updated = formData.services.filter((_, i) => i !== idx);
-                      setFormData({ ...formData, services: updated });
-                    }} style={{ background: '#ff4e50', color: '#fff', border: 'none', borderRadius: '0.7rem', padding: '0.5rem 0.8rem', cursor: 'pointer' }}>Remove</button>
-                  )}
-                </div>
-              ))}
-              <button type="button" onClick={() => setFormData({ ...formData, services: [...formData.services, ''] })} style={{ background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)', color: '#fff', border: 'none', borderRadius: '1rem', padding: '0.5rem 1.2rem', fontWeight: 'bold', cursor: 'pointer', marginBottom: '1rem' }}>+ Add Service</button>
-            </div>}
-
-            
-          </div>
+      {/* Form */}
+      <form onSubmit={handleSubmit} style={{
+        maxWidth: '900px',
+        margin: '0 auto',
+        background: '#fff',
+        borderRadius: '8px',
+        padding: '2rem',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+      }}>
+        
+        {/* Basic Information */}
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ fontSize: '1.2rem', color: '#333', marginBottom: '1rem' }}>Basic Information</h3>
           
-          {/* Template Preview below the button */}
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            Website Name *
+          </label>
+          <input 
+            type="text" 
+            name="name" 
+            value={formData.name} 
+            onChange={handleChange} 
+            required 
+            placeholder="Enter website name" 
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              borderRadius: '4px',
+              border: '1px solid #ddd',
+              fontSize: '1rem',
+              marginBottom: '1rem',
+            }} 
+          />
+
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            Site Type
+          </label>
+          <select 
+            name="siteType" 
+            value={formData.siteType} 
+            onChange={handleChange} 
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              borderRadius: '4px',
+              border: '1px solid #ddd',
+              fontSize: '1rem',
+              marginBottom: '1rem',
+            }}>
+            <option value="">Select site type</option>
+            <option value="Portfolio">Portfolio</option>
+            <option value="Blog">Blog</option>
+            <option value="Business">Business</option>
+            <option value="Personal">Personal</option>
+            <option value="Event">Event</option>
+            <option value="E-commerce">E-commerce</option>
+          </select>
+
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            Template
+          </label>
+          <select 
+            name="templateId" 
+            value={formData.templateId} 
+            onChange={handleChange} 
+            style={{
+              width: '50%',
+              padding: '0.75rem',
+              borderRadius: '4px',
+              border: '1px solid #ddd',
+              fontSize: '1rem',
+              marginBottom: '1rem',
+            }}>
+            {filteredTemplates.length === 0 ? (
+              <option value="">No templates available</option>
+            ) : (
+              filteredTemplates.map(t => (
+                <option key={t.folderName} value={t.folderName}>{t.name || t.folderName}</option>
+              ))
+            )}
+          </select>
+
+          {/* Template Preview */}
           {formData.templateId && (
-            <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+            <div style={{ 
+              marginBottom: '1rem', 
+              padding: '1rem', 
+              background: '#f8f9fa', 
+              borderRadius: '8px',
+              border: '1px solid #ddd'
+            }}>
+              <label style={{ 
+                display: 'block', 
+                marginBottom: '0.75rem', 
+                color: '#555', 
+                fontWeight: '600',
+                fontSize: '0.95rem'
+              }}>
+                Template Preview
+              </label>
+              <div style={{ 
+                position: 'relative',
+                cursor: 'pointer',
+                overflow: 'hidden',
+                borderRadius: '8px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                transition: 'transform 0.3s ease'
+              }}
+              onClick={() => setShowModal(true)}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              >
                 <img
-                  src={`http://localhost:5000/templates/${formData.templateId}/template.png`}
+                  src={`${API_BASE_URL}/templates/${formData.templateId}/template.png`}
                   alt="Template Preview"
-                  style={{ width: '120px', height: '80px', objectFit: 'cover', borderRadius: '0.7rem', boxShadow: '0 2px 8px rgba(60,60,120,0.10)', background: '#f6f8fa', cursor: 'pointer' }}
-                  onClick={() => setShowModal(true)}
-                  onError={e => {
+                  style={{ 
+                    width: '40%', 
+                    height: 'auto',
+                    maxHeight: '200px',
+                    objectFit: 'cover', 
+                    display: 'block',
+                    borderRadius: '8px'
+                  }}
+                  onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = 'http://localhost:5000/via.placeholder.com/120x80?text=No+Image';
+                    e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect fill="%23f0f0f0" width="400" height="200"/%3E%3Ctext fill="%23999" font-family="Arial" font-size="18" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3ENo Preview Available%3C/text%3E%3C/svg%3E';
                   }}
                 />
-              <div style={{ fontSize: '1.05rem', color: '#4a5a6a', marginTop: '0.5rem' }}>Selected Template Preview</div>
-              {showModal && (
                 <div style={{
-                  position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 9999,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center'
-                }} onClick={() => setShowModal(false)}>
-                  <button
-                    onClick={e => { e.stopPropagation(); setShowModal(false); }}
-                    style={{
-                      position: 'absolute', top: '2rem', right: '2rem', background: '#fff', color: '#191654', border: 'none', borderRadius: '2rem', padding: '0.7rem 1.4rem', fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 2px 8px rgba(60,60,120,0.18)', zIndex: 10000
-                    }}
-                  >✕ Close</button>
-                  <img
-                    src={`http://localhost:5000/templates/${formData.templateId}/template.png`}
-                    alt="Template Fullscreen"
-                    style={{ maxWidth: '90vw', maxHeight: '90vh', borderRadius: '1.2rem', boxShadow: '0 8px 32px rgba(0,0,0,0.25)', background: '#fff' }}
-                    onClick={e => e.stopPropagation()}
-                    onError={e => {
-                      e.target.onerror = null;
-                      e.target.src = 'http://localhost:5000/via.placeholder.com/220x140?text=No+Image';
-                    }}
-                  />
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                  color: 'white',
+                  padding: '1rem',
+                  fontSize: '0.9rem',
+                  textAlign: 'center'
+                }}>
+                  Click to view full size
                 </div>
-              )}
+              </div>
             </div>
           )}
 
-          <button type="submit" disabled={loading} style={{
-            background: 'linear-gradient(90deg, #43c6ac 0%, #191654 100%)',
+          {/* Modal for Full Size Preview */}
+          {showModal && formData.templateId && (
+            <div 
+              style={{
+                position: 'fixed', 
+                top: 0, 
+                left: 0, 
+                width: '100vw', 
+                height: '90vh', 
+                background: 'rgba(0,0,0,0.85)', 
+                zIndex: 9999,
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                padding: '2rem'
+              }} 
+              onClick={() => setShowModal(false)}
+            >
+              <button
+                onClick={(e) => { 
+                  e.stopPropagation(); 
+                  setShowModal(false); 
+                }}
+                style={{
+                  position: 'absolute', 
+                  top: '2rem', 
+                 
+                  background: 'white', 
+                  color: '#333', 
+                  border: 'none', 
+                  borderRadius: '50px', 
+                  padding: '0.75rem 1.5rem', 
+                  fontSize: '1.1rem', 
+                  fontWeight: 'bold', 
+                  cursor: 'pointer', 
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                  zIndex: 10000,
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#f0f0f0';
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'white';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+              >
+                ✕ Close
+              </button>
+              <img
+                src={`${API_BASE_URL}/templates/${formData.templateId}/template.png`}
+                alt="Template Fullscreen"
+                style={{ 
+                  maxWidth: '80vw', 
+                  maxHeight: '80vh', 
+                  borderRadius: '8px', 
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
+                  objectFit: 'contain'
+                }}
+                onClick={(e) => e.stopPropagation()}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="400"%3E%3Crect fill="%23f0f0f0" width="600" height="400"/%3E%3Ctext fill="%23999" font-family="Arial" font-size="24" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3ENo Preview Available%3C/text%3E%3C/svg%3E';
+                }}
+              />
+            </div>
+          )}
+
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            About *
+          </label>
+          <textarea 
+            name="about" 
+            value={formData.about} 
+            onChange={handleChange} 
+            required 
+            placeholder="Describe your website" 
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              borderRadius: '4px',
+              border: '1px solid #ddd',
+              fontSize: '1rem',
+              minHeight: '100px',
+              marginBottom: '1rem',
+              resize: 'vertical',
+            }} 
+          />
+        </div>
+
+        {/* Contact Information */}
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ fontSize: '1.2rem', color: '#333', marginBottom: '1rem' }}>Contact Information</h3>
+          
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            Email
+          </label>
+          <input 
+            type="email" 
+            name="email" 
+            value={formData.email} 
+            onChange={handleChange} 
+            placeholder="contact@example.com" 
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              borderRadius: '4px',
+              border: '1px solid #ddd',
+              fontSize: '1rem',
+              marginBottom: '1rem',
+            }} 
+          />
+
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            Phone
+          </label>
+          <input 
+            type="text" 
+            name="phone" 
+            value={formData.phone} 
+            onChange={handleChange} 
+            placeholder="Phone number" 
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              borderRadius: '4px',
+              border: '1px solid #ddd',
+              fontSize: '1rem',
+              marginBottom: '1rem',
+            }} 
+          />
+
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            Address
+          </label>
+          <input 
+            type="text" 
+            name="address" 
+            value={formData.address} 
+            onChange={handleChange} 
+            placeholder="Business address" 
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              borderRadius: '4px',
+              border: '1px solid #ddd',
+              fontSize: '1rem',
+              marginBottom: '1rem',
+            }} 
+          />
+        </div>
+
+        {/* Images */}
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ fontSize: '1.2rem', color: '#333', marginBottom: '1rem' }}>Images</h3>
+          
+          <label style={{ display: 'block', marginBottom: '0.5rem', color: '#555', fontWeight: '600' }}>
+            Upload Images (Max 5)
+          </label>
+          <input 
+            type="file" 
+            multiple 
+            accept="image/*" 
+            onChange={handleImageChange} 
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              marginBottom: '1rem',
+            }} 
+          />
+          
+          {images.length > 0 && (
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {images.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={URL.createObjectURL(img)}
+                  alt={`preview-${idx}`}
+                  style={{ 
+                    width: '80px', 
+                    height: '80px', 
+                    objectFit: 'cover', 
+                    borderRadius: '4px',
+                    border: '1px solid #ddd'
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Submit Button */}
+        <button 
+          type="submit" 
+          disabled={loading} 
+          style={{
+            width: '100%',
+            background: loading ? '#ccc' : '#4CAF50',
             color: '#fff',
             border: 'none',
-            borderRadius: '2rem',
-            padding: '0.8rem 2.2rem',
-            fontSize: '1.2rem',
+            borderRadius: '4px',
+            padding: '1rem',
+            fontSize: '1.1rem',
             fontWeight: 'bold',
             cursor: loading ? 'not-allowed' : 'pointer',
-            boxShadow: '0 2px 8px rgba(60, 60, 120, 0.10)',
-            transition: 'transform 0.2s',
+            transition: 'background 0.2s',
           }}
-            onMouseOver={e => !loading && (e.currentTarget.style.transform = 'scale(1.05)')}
-            onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            {loading ? 'Processing...' : 'Generate Website'}
-          </button>
-          
-          <p style={{ color: '#e74c3c', fontWeight: 'bold', marginTop: '0.5rem' }}>{message}</p>
+        >
+          {loading ? 'Generating...' : 'Generate Website'}
+        </button>
 
-        </form>
-        {/* Floating quote at bottom right, always visible */}
-        <div style={{
-          position: 'fixed',
-          right: '2.5rem',
-          bottom: '2.5rem',
-          zIndex: 9999,
-          background: 'linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%)',
-          borderRadius: '1rem',
-          padding: '1rem 1.5rem',
-          fontSize: '1.1rem',
-          color: '#191654',
-          fontWeight: '500',
-          boxShadow: '0 2px 8px rgba(60,60,120,0.10)',
-          textAlign: 'center',
-          maxWidth: '320px',
-        }}>
-          "The best way to predict the future is to create it." – Peter Drucker
-        </div>
-      </div>
-    {/* Footer */}
-    <footer style={{
-      width: '100%',
-      textAlign: 'center',
-      padding: '1.1rem 0 0.7rem 0',
-      fontSize: '1.05rem',
-      color: '#191654',
-      background: 'rgba(255,255,255,0.55)',
-      borderTop: '2px solid #43c6ac',
-      marginTop: '2rem',
-      fontWeight: '500',
-      letterSpacing: '0.04em',
-      boxShadow: '0 -2px 12px rgba(60,60,120,0.07)',
-      position: 'relative',
-      zIndex: 2,
-    }}>
-      &copy; {new Date().getFullYear()} Site Builder. All rights reserved.
-    </footer>
-  </div>
-
+        {message && (
+          <p style={{ 
+            marginTop: '1rem', 
+            padding: '0.75rem', 
+            background: '#f0f0f0', 
+            borderRadius: '4px',
+            color: '#333',
+            textAlign: 'center'
+          }}>
+            {message}
+          </p>
+        )}
+      </form>
+    </div>
   );
 }
 

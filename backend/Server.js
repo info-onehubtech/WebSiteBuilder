@@ -22,6 +22,11 @@ app.use('/api/admin', adminRoutes);
 // Serve template folders and images statically
 app.use('/templates', express.static(path.join(__dirname, 'templates')));
 
+// Serve template documentation
+app.get('/TEMPLATE_GUIDE.md', (req, res) => {
+    res.sendFile(path.join(__dirname, 'TEMPLATE_GUIDE.md'));
+});
+
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/websiteBuilderDB')
     .then(() => console.log('MongoDB connected successfully.'))
